@@ -270,7 +270,7 @@ static struct zone_page_metadata *zone_pva_to_meta(zone_pva_t page){
          * go to top of xrefed function
          * you will see ADRL ... LDP ... the dst of the SECOND adrl is zone_info
          */
-        zone_info = (xnu_zone_info_t *)(0xFFFFFFF0077296F0 + kernel_slide);
+        zone_info = (xnu_zone_info_t *)(0xFFFFFFF0070B1730 + kernel_slide);
     }
 
 	return &zone_info->zi_meta_base[page.packed_address];
@@ -301,9 +301,9 @@ static bool zone_pva_is_equal(zone_pva_t pva1, zone_pva_t pva2){
 
 void *zone_for_kptr(void *kptr){
     if(!zone_array){
-        /* iphone 8 14.6 */
+        /* iphone 6s 14.6 */
         /* Found in the same place zone_info was found */
-        zone_array = (struct zone *)(0xFFFFFFF00939D808 + kernel_slide);
+        zone_array = (struct zone *)(0xFFFFFFF0077A4C88 + kernel_slide);
     }
 
     if(!kptr)
@@ -430,7 +430,7 @@ void zinfo_for_kptr(void *kptr){
             return;
         }
 
-        zone_info = (xnu_zone_info_t *)(0xFFFFFFF0077296F0 + kernel_slide);
+        zone_info = (xnu_zone_info_t *)(0xFFFFFFF0070B1730 + kernel_slide);
     }
 
     if(!kptr)

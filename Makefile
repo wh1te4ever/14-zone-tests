@@ -11,4 +11,4 @@ kernel_hooks.o : kernel_hooks.c xnuspy_ctl.h
 ztests : kernel_hooks.o main.c 
 	$(CC) $(CFLAGS) kernel_hooks.o main.c -o ztests
 	ldid -Sent.xml ./ztests
-	rsync -sz -e 'ssh -p 2222' ztests root@localhost:/var/root
+	scp -r -P 2224 ztests root@localhost:/var/root
